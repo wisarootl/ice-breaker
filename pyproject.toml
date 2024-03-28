@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "ice-breaker"
+version = "0.1.0"
+description = ""
+authors = ["Wisaroot Lertthaweedech <l.wisaroot@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+orjson = ">=3.9.0, <3.10.0"  # 3.10.0 is buggy
+langchain = "^0.1.13"
+openai = "^1.14.3"
+langchain-openai = "^0.1.1"
+
+[tool.poetry.dev-dependencies]
+black = { version = "^24.2.0", extras = ["jupyter"] }
+isort = "^5.13.2"
+ipykernel = "^6.29.3"
+ruff = "*"
+mypy = "*"
+pre-commit = "*"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
