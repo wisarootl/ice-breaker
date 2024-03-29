@@ -1,16 +1,22 @@
-from langchain import hub
-from langchain.agents import AgentExecutor, create_react_agent
-from langchain_core.prompts import PromptTemplate
+from dotenv import load_dotenv
+
+load_dotenv()
+
+from langchain.agents import (
+    create_react_agent,
+    AgentExecutor,
+)
 from langchain_core.tools import Tool
 from langchain_openai import ChatOpenAI
+from langchain import hub
+from langchain_core.prompts import PromptTemplate
 from tools.tools import get_profile_url
 
 
-def lookup(name: str):
+def lookup(name: str) -> str:
     llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
     template = (
-        "Given the full name {name_of_person}, "
-        "I want you to get it me a link to their Linkedin profile page. "
+        "Given the full name {name_of_person}, I want you to give me a link to their Linkedin profile page."
         "Your answer should contain only a URL"
     )
 
@@ -35,5 +41,4 @@ def lookup(name: str):
     )
 
     linked_profile_url = result["output"]
-
     return linked_profile_url
